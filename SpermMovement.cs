@@ -15,7 +15,7 @@ public class SpermMovement : MonoBehaviour {
 	void Start ()
 	{
 		spriteCount = 0;
-		InvokeRepeating ("AnimateSperm", 0.5f , 0.5f);
+		InvokeRepeating ("AnimateSperm", 0.3f , 0.3f);
 	}
 
 	void AnimateSperm()
@@ -51,9 +51,12 @@ public class SpermMovement : MonoBehaviour {
 
 			Vector3 cameraPosition = Camera.main.transform.position;
 
-			if(cameraPosition.y < mouseWorldPos3D.y)
+			//Camera.main.GetComponent<SmoothFollow2D>().targetY = mouseWorldPos3D.y;
+
+			if(cameraPosition.y < mouseWorldPos3D.y - 3)
 			{
 				Camera.main.GetComponent<SmoothFollow2D>().targetY = mouseWorldPos3D.y;
+				Camera.main.GetComponent<SmoothFollow2D>().targetX = mouseWorldPos3D.x;
 			}
 
 			spermObject.GetComponent<SpriteRenderer> ().sprite = spriteArray [spriteCount];
