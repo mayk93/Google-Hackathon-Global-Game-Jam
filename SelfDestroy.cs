@@ -7,7 +7,7 @@ public class SelfDestroy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		Destroy (gameObject, 3);
 	}
 
 	void OnDestroy() 
@@ -18,7 +18,7 @@ public class SelfDestroy : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Destroy (gameObject, 3);
+		transform.localScale = new Vector3 (transform.localScale.x + 0.1f, transform.localScale.y + 0.1f, transform.localScale.z + 0.1f);
 	}
 
 	void OnCollisionEnter2D()
