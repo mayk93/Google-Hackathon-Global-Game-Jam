@@ -4,7 +4,7 @@ using System.Collections;
 public class SpermMovement : MonoBehaviour {
 
 	public GameObject spermObject;
-	public float velocityRatio = 1f;
+	public float velocityRatio = 5f;
 
 	public GameObject emptyGameObject;
 
@@ -67,6 +67,8 @@ public class SpermMovement : MonoBehaviour {
 				spriteCount = 0;
 			}
 		}
+
+		//spermObject.rigidbody2D.gravityScale = spermObject.rigidbody2D.velocity.magnitude;
 	}
 
 }

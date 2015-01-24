@@ -26,7 +26,7 @@ public class GooScript : MonoBehaviour {
 		SelfDestroy cloneSelfDestroy = clone.AddComponent<SelfDestroy> ();
 		cloneSelfDestroy.explosion = explosionEffect;
 
-		clone.transform.localScale = new Vector3 (Random.Range (3f, 7f), Random.Range (3f, 7f), Random.Range (0.5f, 1.5f));
+		clone.transform.localScale = new Vector3 (Random.Range (1f, 3f), Random.Range (1f, 3f), Random.Range (0.5f, 1.5f));
 	}
 	
 	// Update is called once per frame
