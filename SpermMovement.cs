@@ -7,7 +7,27 @@ public class SpermMovement : MonoBehaviour {
 	public float velocityRatio = 1f;
 
 	public GameObject emptyGameObject;
-	
+
+	public Sprite [] spriteArray;
+
+	int spriteCount;
+
+	void Start ()
+	{
+		spriteCount = 0;
+		InvokeRepeating ("AnimateSperm", 0.5f , 0.5f);
+	}
+
+	void AnimateSperm()
+	{
+		spermObject.GetComponent<SpriteRenderer> ().sprite = spriteArray [spriteCount];
+		spriteCount = spriteCount + 1;
+		if (spriteCount >= 4) 
+		{
+			spriteCount = 0;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -27,8 +47,6 @@ public class SpermMovement : MonoBehaviour {
 			float diffY = mWorldPos.y - mainPos.y;
 			float angle = Mathf.Atan2(diffY, diffX) * Mathf.Rad2Deg;
 
-			Debug.Log(angle);
-
 			spermObject.rigidbody2D.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 50));
 
 			Vector3 cameraPosition = Camera.main.transform.position;
@@ -36,6 +54,14 @@ public class SpermMovement : MonoBehaviour {
 			if(cameraPosition.y < mouseWorldPos3D.y)
 			{
 				Camera.main.GetComponent<SmoothFollow2D>().targetY = mouseWorldPos3D.y;
+			}
+
+			spermObject.GetComponent<SpriteRenderer> ().sprite = spriteArray [spriteCount];
+			
+			spriteCount = spriteCount + 1;
+			if (spriteCount >= 4) 
+			{
+				spriteCount = 0;
 			}
 		}
 	}
