@@ -9,6 +9,8 @@ public class SpermAbilities : MonoBehaviour {
 	public GameObject explosionEffect;
 	public float velocityRatio = 15f;
 
+	public AudioClip[] shotSounds;
+
 	public float coolDown;
 	private bool shootOk;
 
@@ -66,12 +68,13 @@ public class SpermAbilities : MonoBehaviour {
 		if (_doubleClickPhaseStart > -1 && (Time.time - _doubleClickPhaseStart) > 0.2f)
 		{
 			_doubleClickPhaseStart = -1;
+
 		}
 		if( Input.GetMouseButtonUp(0) )
 		{
 			if(Time.time - _buttonDownPhaseStart > 1.0f)
 			{
-				Debug.Log ("long click");
+				//Debug.Log ("long click");
 				_doubleClickPhaseStart = -1;
 			}
 			else
@@ -82,7 +85,7 @@ public class SpermAbilities : MonoBehaviour {
 
 					shootOk = false;
 
-					print(shootOk);
+					//print(shootOk);
 					
 					Vector3 mouseWorldPos3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 					Vector2 mousePos2D = new Vector2( mouseWorldPos3D.x , mouseWorldPos3D.y );
@@ -94,11 +97,14 @@ public class SpermAbilities : MonoBehaviour {
 					spermProjectileRidgidBody2D.gravityScale = 0f;
 					PolygonCollider2D spermProjectilePolygonCollider2D = spermProjectile.AddComponent<PolygonCollider2D> ();
 
-					GameObject spermProjectileParticle = (GameObject)Instantiate(explosionEffect,transform.position,transform.rotation);
+					GameObject spermProjectileParticle = (GameObject)Instantiate(explosionEffect,new Vector3(transform.position.x,transform.position.y,transform.position.z-1),transform.rotation);
 					spermProjectileParticle.transform.parent = spermProjectile.transform;
 
 					spermProjectile.rigidbody2D.velocity = transform.TransformDirection(Vector3.up * velocityRatio);
 					spermProjectileParticle.rigidbody2D.velocity = transform.TransformDirection(Vector3.up * velocityRatio);
+
+					audio.clip = shotSounds[Random.Range(0,shotSounds.Length-1)];
+					audio.Play();
 
 					//spermProjectile.rigidbody2D.
 

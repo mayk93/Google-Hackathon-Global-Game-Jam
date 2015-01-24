@@ -19,7 +19,9 @@ public class GooScript : MonoBehaviour {
 		//gooArray [Random.Range (0, gooArray.Length - 1)]
 		GameObject clone = (GameObject)Instantiate (empty, new Vector3(transform.position.x + Random.Range (-5f, 5),transform.position.y + Random.Range (0f, 1f),transform.position.z-1), Quaternion.identity);
 		SpriteRenderer cloneSpriteRenderer = clone.AddComponent<SpriteRenderer>();
+
 		cloneSpriteRenderer.sprite = gooArray [Random.Range (0, gooArray.Length - 1)];
+
 		Rigidbody2D cloneRidgidBody2D = clone.AddComponent<Rigidbody2D> ();
 		cloneRidgidBody2D.gravityScale = 0.3f;
 		PolygonCollider2D clonePolygonCollider2D = clone.AddComponent<PolygonCollider2D> ();
