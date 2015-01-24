@@ -11,13 +11,13 @@ public class GooScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		transform.position = new Vector2 (sperm.rigidbody2D.position.x, sperm.rigidbody2D.position.y + 15);
-		InvokeRepeating ("spawnGoo", 2f , 2f);
+		InvokeRepeating ("spawnGoo", 1f , 1f);
 	}
 
 	void spawnGoo()
 	{
 		//gooArray [Random.Range (0, gooArray.Length - 1)]
-		GameObject clone = (GameObject)Instantiate (empty, new Vector3(transform.position.x + Random.Range (-10f, 10f),transform.position.y + Random.Range (0f, 1f),transform.position.z-1), Quaternion.identity);
+		GameObject clone = (GameObject)Instantiate (empty, new Vector3(transform.position.x + Random.Range (-5f, 5),transform.position.y + Random.Range (0f, 1f),transform.position.z-1), Quaternion.identity);
 		SpriteRenderer cloneSpriteRenderer = clone.AddComponent<SpriteRenderer>();
 		cloneSpriteRenderer.sprite = gooArray [Random.Range (0, gooArray.Length - 1)];
 		Rigidbody2D cloneRidgidBody2D = clone.AddComponent<Rigidbody2D> ();

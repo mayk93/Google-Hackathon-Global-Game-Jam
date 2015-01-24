@@ -20,7 +20,7 @@ public class SpermAbilities : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		shootOk = true;
-		coolDown = 5f;
+		coolDown = 1f;
 	}
 
 	/*

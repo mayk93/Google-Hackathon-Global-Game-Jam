@@ -20,7 +20,7 @@ public class SelfDestroy : MonoBehaviour {
 	void BeforeDestroyQuick (GameObject gameObject)
 	{
 		ParticleSystem p = (ParticleSystem)Instantiate(explosion, transform.position, transform.rotation);
-		Destroy (gameObject, 1f);
+		Destroy (gameObject, 0.1f);
 			//Destroy (p , 0.5f);
 	}
 
