@@ -11,18 +11,20 @@ public class SpermMovement : MonoBehaviour {
 	public Sprite [] spriteArray;
 
 	int spriteCount;
+	//int currentAnimation;
 
 	void Start ()
 	{
+		//currentAnimation = 0;
 		spriteCount = 0;
-		InvokeRepeating ("AnimateSperm", 0.3f , 0.3f);
+		InvokeRepeating ("AnimateSperm", 0.03f , 0.03f);
 	}
 
 	void AnimateSperm()
 	{
 		spermObject.GetComponent<SpriteRenderer> ().sprite = spriteArray [spriteCount];
 		spriteCount = spriteCount + 1;
-		if (spriteCount >= 4) 
+		if (spriteCount >= spriteArray.Length-1) 
 		{
 			spriteCount = 0;
 		}
