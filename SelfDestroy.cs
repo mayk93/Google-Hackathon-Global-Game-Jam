@@ -9,7 +9,7 @@ public class SelfDestroy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Destroy (gameObject, 3f);
+		//Destroy (gameObject, 3f);
 		destructionAudioSource = gameObject.AddComponent<AudioSource>();
 		destruction = GameObject.Find ("GUI_Manager").GetComponent<GUI_Script> ().destructionArray;
 	}
@@ -40,15 +40,16 @@ public class SelfDestroy : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		transform.localScale = new Vector3 (transform.localScale.x + 0.005f, transform.localScale.y + 0.005f, transform.localScale.z + 0.05f);
+		transform.localScale = new Vector3 (transform.localScale.x + 0.001f, transform.localScale.y + 0.001f, transform.localScale.z + 0.01f);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
-		if (coll.gameObject.tag == "Player") 
+		Collider2D colliderX = coll.collider;
+		if (colliderX.tag == "Player") 
 		{
 			coll.gameObject.GetComponent<Health>().takeDamage(Random.Range(10f,20f));
+			BeforeDestroyQuick (gameObject);
 		}
-		BeforeDestroyQuick (gameObject);
 	}
 }

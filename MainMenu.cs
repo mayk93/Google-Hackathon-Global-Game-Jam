@@ -8,11 +8,11 @@ public class MainMenu : MonoBehaviour {
 	{
 		if ( GameObject.Find("ToggleX").GetComponent<Toggle>().isOn == true )
 		{
-			Application.LoadLevel (sceneNumber+1);
+			Application.LoadLevel ("movie");
 		}
 		else
 		{
-			Application.LoadLevel (sceneNumber);
+			Application.LoadLevel ("beforePlay");
 		}
 	}
 	

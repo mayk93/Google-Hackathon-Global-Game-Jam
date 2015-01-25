@@ -10,6 +10,6 @@ function Start () {
 function Update () {
 	if(movieTexture.isPlaying == false)
 	{
-		Application.LoadLevel(1);
+		Application.LoadLevel("beforePlay");
 	}
 }
