@@ -8,6 +8,8 @@ public class Health : MonoBehaviour {
 	public GameObject sperm;
 	private bool isDead;
 
+	public AudioClip deathSound;
+
 	// Use this for initialization
 	void Start () {
 		movement = GetComponent<SpermMovement> ();
@@ -35,6 +37,7 @@ public class Health : MonoBehaviour {
 
 	void spermDying()
 	{
+		audio.PlayOneShot (deathSound, 1);
 		isDead = true;
 	}
 

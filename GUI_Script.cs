@@ -32,7 +32,11 @@ public class GUI_Script : MonoBehaviour {
 			}
 			else
 			{
-				GUILayout.Label(healthArray[0]);
+				if (hpScript.health > 25 && hpScript.health <= 50)
+				{
+					GUILayout.Label(healthArray[0]);
+				}
+
 			}
 		}
 	}

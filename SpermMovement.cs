@@ -10,14 +10,20 @@ public class SpermMovement : MonoBehaviour {
 
 	public Sprite [] spriteArray;
 
+	public AudioClip theFlap;
+
 	int spriteCount;
 	//int currentAnimation;
 
+	AudioClip flap;
+
 	void Start ()
 	{
+		flap = theFlap;
 		//currentAnimation = 0;
 		spriteCount = 0;
 		InvokeRepeating ("AnimateSperm", 0.03f , 0.03f);
+		InvokeRepeating ("SpermSound", 0.01f , 1.9f);
 	}
 
 	void AnimateSperm()
@@ -30,13 +36,17 @@ public class SpermMovement : MonoBehaviour {
 		}
 	}
 
+	void SpermSound()
+	{
+		audio.PlayOneShot(flap,1);
+	}
+
 	float _buttonDownPhaseStart;
 	float _doubleClickPhaseStart;
 	
 	// Update is called once per frame
 	void Update () 
 	{
-
 		if(Input.GetMouseButtonDown(0))
 		{
 			_buttonDownPhaseStart = Time.time;
