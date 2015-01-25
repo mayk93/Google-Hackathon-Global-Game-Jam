@@ -9,6 +9,7 @@ public class BeforePlayGUI : MonoBehaviour {
 	private SpriteRenderer mySpr;
 
 	public GameObject buttonStart;
+	public GameObject buttonNext;
 
 	public AudioClip audioClp;
 
@@ -29,6 +30,8 @@ public class BeforePlayGUI : MonoBehaviour {
 
 		AudioSource ausrc = gameObject.GetComponent<AudioSource>();
 		audio.PlayOneShot (audioClp);
+
+		buttonNext.SetActive (false);
 	}
 
 	public void StartButtonFunction()

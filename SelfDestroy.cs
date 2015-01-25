@@ -46,9 +46,14 @@ public class SelfDestroy : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll)
 	{
 		Collider2D colliderX = coll.collider;
-		if (colliderX.tag == "Player") 
+		if (colliderX.tag == "Player" ) 
 		{
 			coll.gameObject.GetComponent<Health>().takeDamage(Random.Range(10f,20f));
+			BeforeDestroyQuick (gameObject);
+		}
+		if (colliderX.tag == "Projectile") 
+		{
+			//print ("Projectile Collision");
 			BeforeDestroyQuick (gameObject);
 		}
 	}

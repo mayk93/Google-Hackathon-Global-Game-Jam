@@ -35,10 +35,14 @@ public class Health : MonoBehaviour {
 		}
 	}
 
-	void spermDying()
+	IEnumerator spermDying()
 	{
 		audio.PlayOneShot (deathSound, 1);
 		isDead = true;
+
+		yield return new WaitForSeconds (3);
+
+		Application.LoadLevel ("gameOver");
 	}
 
 	void spermDead()
